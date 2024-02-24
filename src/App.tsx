@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import debounce from 'debounce';
+import { debounce, throttle } from 'lodash';
 
 import './App.css';
 
@@ -125,10 +125,15 @@ const shapes = [
   <polygon points='50,5 100,100 5,100' fill='Crimson' />,
 ];
 
+let lastKeypressTime = 0;
+let debouncing = false;
+
+const THRESHOLD_MS = 250;
+
 function App() {
   const [letter, setLetter] = useState('B');
 
-  const updateLetterFromKeyboardKey = debounce((event: KeyboardEvent) => {
+  const updateLetterFromKeyboardKey = (event: KeyboardEvent) => {
     const key = event.key;
     if (/^[a-zA-Z0-9]$/.test(key)) {
       const letter = key.toUpperCase();
@@ -140,11 +145,35 @@ function App() {
       const symbol = getRandomAnimalEmoji();
       setLetter(symbol);
     }
-  }, 500); // 500ms delay
+
+    debouncing = false;
+  };
+
+  const updateLetterFromKeyboardKeyDebounced = debounce(updateLetterFromKeyboardKey, 1200);
 
   const handleKeyDown: (ev: KeyboardEvent) => any = event => {
-    setLetter('');
-    updateLetterFromKeyboardKey(event);
+    event.preventDefault();
+
+    if (event.key === ' ') {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen();
+      }
+      return;
+    }
+
+    const currentTime = new Date().getTime();
+    const deltaTime = currentTime - lastKeypressTime;
+    if (deltaTime > THRESHOLD_MS) {
+      if (debouncing) {
+        return;
+      }
+      updateLetterFromKeyboardKey(event);
+    } else {
+      setLetter('');
+      updateLetterFromKeyboardKeyDebounced(event);
+      debouncing = true;
+    }
+    lastKeypressTime = currentTime;
   };
 
   useEffect(() => {
