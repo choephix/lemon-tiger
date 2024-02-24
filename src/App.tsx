@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import debounce from 'debounce';
 
 import './App.css';
 
@@ -127,7 +128,7 @@ const shapes = [
 function App() {
   const [letter, setLetter] = useState('B');
 
-  const handleKeyDown: (ev: KeyboardEvent) => any = event => {
+  const updateLetterFromKeyboardKey = debounce((event: KeyboardEvent) => {
     const key = event.key;
     if (/^[a-zA-Z0-9]$/.test(key)) {
       const letter = key.toUpperCase();
@@ -139,6 +140,11 @@ function App() {
       const symbol = getRandomAnimalEmoji();
       setLetter(symbol);
     }
+  }, 500); // 500ms delay
+
+  const handleKeyDown: (ev: KeyboardEvent) => any = event => {
+    setLetter('');
+    updateLetterFromKeyboardKey(event);
   };
 
   useEffect(() => {
@@ -149,7 +155,7 @@ function App() {
     };
   }, []);
 
-  const shape = shapes[Math.floor(Math.random() * shapes.length)];
+  const shape = letter ? shapes[Math.floor(Math.random() * shapes.length)] : null;
 
   const getRandomPercentage = () => {
     return `${Math.random() * 20 + 40}%`;
