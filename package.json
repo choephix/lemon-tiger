@@ -5,6 +5,7 @@
   "main": "main.js",
   "description": "A baby keyboard fun app",
   "author": "Stefan Ginev",
+  "email": "stefan@revoltage.io",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
