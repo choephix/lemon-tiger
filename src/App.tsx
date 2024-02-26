@@ -154,11 +154,8 @@ function App() {
   const handleKeyDown: (ev: KeyboardEvent) => any = event => {
     event.preventDefault();
 
-    if (event.key === ' ') {
-      if (!document.fullscreenElement) {
-        document.documentElement.requestFullscreen();
-      }
-      return;
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen();
     }
 
     const currentTime = new Date().getTime();
