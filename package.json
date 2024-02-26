@@ -46,7 +46,7 @@
       "target": "nsis"
     },
     "directories": {
-      "output": "build"
+      "output": "bin"
     },
     "files": [
       "dist/**/*",
