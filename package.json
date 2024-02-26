@@ -1,19 +1,21 @@
 {
-  "name": "baby-keyboard-fun",
+  "name": "lemon-tiger",
   "private": true,
   "version": "0.0.0",
   "main": "main.js",
+  "description": "A baby keyboard fun app",
+  "author": "Stefan Ginev",
   "scripts": {
-    "el": "electron .",
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
+    "el:dev": "electron .",
+    "el:build": "tsc && vite build && electron-builder",
     "deploy": "tsc && vite build & firebase deploy"
   },
   "dependencies": {
     "@types/lodash": "^4.14.202",
     "debounce": "^2.0.0",
-    "electron": "^29.0.1",
     "lodash": "^4.17.21",
     "npm": "^10.4.0",
     "react": "^18.2.0",
@@ -27,11 +29,30 @@
     "@typescript-eslint/parser": "^7.0.2",
     "@vitejs/plugin-react-swc": "^3.5.0",
     "electron": "^29.0.1",
+    "electron-builder": "^24.12.0",
     "eslint": "^8.56.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
     "firebase-tools": "^13.3.1",
     "typescript": "^5.2.2",
     "vite": "^5.1.4"
+  },
+  "build": {
+    "appId": "com.example.yourapp",
+    "linux": {
+      "target": ["AppImage", "deb"]
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "directories": {
+      "output": "build"
+    },
+    "files": [
+      "dist/**/*",
+      "node_modules/**/*",
+      "package.json",
+      "main.js"
+    ]
   }
 }
