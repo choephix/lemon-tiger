@@ -5,7 +5,7 @@
   "type": "module",
   "main": "main.js",
   "scripts": {
-    "start": "electron .",
+    "el": "electron .",
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
@@ -14,9 +14,12 @@
   "dependencies": {
     "@types/lodash": "^4.14.202",
     "debounce": "^2.0.0",
+    "electron": "^29.0.1",
     "lodash": "^4.17.21",
+    "npm": "^10.4.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "run": "^1.5.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.56",
