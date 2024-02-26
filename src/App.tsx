@@ -176,11 +176,17 @@ function App() {
     lastKeypressTime = currentTime;
   };
 
+  const disableContextMenu = (event: MouseEvent) => {
+    event.preventDefault();
+  };
+
   useEffect(() => {
     window.addEventListener('keydown', handleKeyDown);
+    window.addEventListener('contextmenu', disableContextMenu);
 
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener('contextmenu', disableContextMenu);
     };
   }, []);
 
