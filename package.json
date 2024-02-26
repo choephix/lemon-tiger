@@ -4,8 +4,10 @@
   "version": "0.0.0",
   "main": "main.js",
   "description": "A baby keyboard fun app",
-  "author": "Stefan Ginev",
-  "email": "stefan@revoltage.io",
+  "author": {
+    "name": "Stefan Ginev",
+    "email": "stefan@revoltage.io"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -41,7 +43,10 @@
   "build": {
     "appId": "com.example.yourapp",
     "linux": {
-      "target": ["AppImage", "deb"]
+      "target": [
+        "AppImage",
+        "deb"
+      ]
     },
     "win": {
       "target": "nsis"
