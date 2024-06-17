@@ -1,7 +1,11 @@
+
 #root {
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  overflow: hidden;
+
+  --animation-duration: 0.2s;
 }
 
 .center {
@@ -25,8 +29,21 @@
   overflow: visible;
   white-space: nowrap;
   text-align: center;
+
+  animation: scaleIn var(--animation-duration) ease-in-out;
+}
+
+@keyframes scaleIn {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
 }
 
 .letter {
   font-weight: bold;
+
+  animation: scaleIn var(--animation-duration) ease-in-out;
 }

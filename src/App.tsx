@@ -130,6 +130,7 @@ let debouncing = false;
 
 const THRESHOLD_MS = 250;
 
+let i = 0;
 function App() {
   const [letter, setLetter] = useState('B');
 
@@ -193,8 +194,10 @@ function App() {
     return `${Math.random() * 20 + 40}%`;
   };
 
+  i++;
+
   return (
-    <div className='letter-container'>
+    <div className='letter-container' key={i}>
       <div className='center shape'>
         <svg height='60vh' width='60vw' viewBox='0 0 100 100'>
           {shape}
