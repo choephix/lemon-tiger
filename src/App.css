@@ -5,7 +5,7 @@
   text-align: center;
   overflow: hidden;
 
-  --animation-duration: 0.2s;
+  --animation-duration: 0.1s;
 }
 
 .center {
@@ -30,7 +30,7 @@
   white-space: nowrap;
   text-align: center;
 
-  animation: scaleIn var(--animation-duration) ease-in-out;
+  animation: scaleIn var(--animation-duration) ease-out;
 }
 
 @keyframes scaleIn {
@@ -45,5 +45,5 @@
 .letter {
   font-weight: bold;
 
-  animation: scaleIn var(--animation-duration) ease-in-out;
+  animation: scaleIn var(--animation-duration) ease-out;
 }
