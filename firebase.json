@@ -1,6 +1,5 @@
 {
   "hosting": {
-    "target": "tiger-lemon",
     "public": "dist",
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "rewrites": [
