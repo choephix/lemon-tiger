@@ -1,5 +1,16 @@
 {
   "projects": {
     "default": "tiger-lemon"
-  }
+  },
+  "targets": {
+    "tiger-lemon": {
+      "hosting": {
+        "tiger-lemon": [
+          "hosting"
+        ]
+      }
+    }
+  },
+  "etags": {},
+  "dataconnectEmulatorConfig": {}
 }
