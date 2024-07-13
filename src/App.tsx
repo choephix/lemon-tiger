@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { debounce, throttle } from "lodash";
 
 import "./App.css";
-import { keyToEmoji } from "./keyToEmoji";
+import { alphabetAnimalEmoji, keyToEmoji } from "./keyToEmoji";
 
 function getRandomAnimalEmoji(keyCode: number): string {
   const animalEmojis = [
@@ -80,13 +80,14 @@ function App() {
   const updateLetterFromKeyboardKey = (event: KeyboardEvent) => {
     const key = event.key;
     if (/^[a-zA-Z0-9]$/.test(key)) {
-      const letter = key.toUpperCase();
+      const animalEmoji = alphabetAnimalEmoji[key.toLowerCase()];
+      const letter = animalEmoji || key.toUpperCase();
       setLetter(letter);
     } else if (key === " ") {
       const symbol = " ";
       setLetter(symbol);
     } else {
-      const symbol = keyToEmoji[key] ?? getRandomAnimalEmoji(event.keyCode);
+      const symbol = keyToEmoji[key] || getRandomAnimalEmoji(event.keyCode);
       setLetter(symbol);
     }
 
